@@ -32,9 +32,9 @@ class RaygunTarget extends Target
             [$context, $level, , , $traces] = $message;
 
             if ($context instanceof Throwable) {
-                $this->component->sendException($context);
+                $this->component?->sendException($context);
             } elseif (is_string($context)) {
-                $this->component->sendError(
+                $this->component?->sendError(
                     $level,
                     $context,
                     $traces[0]['file'] ?? '',

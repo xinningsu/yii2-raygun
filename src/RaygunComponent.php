@@ -9,7 +9,6 @@ use GuzzleHttp\Client;
 use Raygun4php\RaygunClient;
 use Raygun4php\Transports\GuzzleSync;
 use Throwable;
-use Yii;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
 
@@ -81,15 +80,15 @@ class RaygunComponent extends Component
      * @param string $errstr   The error string
      * @param string $errfile  The file the error occurred in
      * @param int    $errline  The line the error occurred on
-     * @return bool
+     * @return mixed
      */
     public function sendError(
         int $errno,
         string $errstr,
         string $errfile,
         int $errline
-    ): bool {
-        return $this->client->SendError(
+    ): mixed {
+        return $this->client?->SendError(
             $errno,
             $errstr,
             $errfile,
@@ -103,11 +102,11 @@ class RaygunComponent extends Component
      * Transmits an exception to the Raygun API
      *
      * @param  Throwable $throwable An exception object to transmit
-     * @return bool
+     * @return mixed
      */
-    public function sendException(Throwable $throwable): bool
+    public function sendException(Throwable $throwable): mixed
     {
-        return $this->client->SendException(
+        return $this->client?->SendException(
             $throwable,
             $this->config['tags'] ?? null,
             $this->config['custom_data'] ?? null
