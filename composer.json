@@ -1,6 +1,6 @@
 {
     "name": "xinningsu/yii2-raygun",
-    "description": "Raygun integration for Yii2, Raygun整合Yii2。",
+    "description": "Raygun Yii2 logger, Raygun integration for Yii2.",
     "keywords": [
         "yii2",
         "raygun",
